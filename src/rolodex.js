@@ -1,38 +1,37 @@
 import React from "react";
 import './style.css';
+import Details from "./details"
 
-class PersonCard extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-	
-}
 
 class Rolodex extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			people: [],
+			button: false
 		}
+
 	}
 
-	componentDidMount() {
+  componentDidMount() {
     fetch("https://randomuser.me/api?results=25")
     .then(response => response.json())
-    .then(d => this.setState({ people: d }))
+    .then(d => this.setState({ people: d.results }))
 
   }
 
 	render() {
-		console.log(this.state.people.results)
+
 		return(
 			
-			<div><h1>Hello</h1></div>
+			<div>
+				<h1 id="heading">Rolodex List</h1>
+				<Details />
+			</div>
 		)
 	}
-
-
 }
-
-
 export default Rolodex
+
+
+
